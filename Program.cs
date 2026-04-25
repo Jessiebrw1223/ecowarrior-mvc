@@ -33,7 +33,8 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    SeedData.Initialize(db);
+     // db.Database.Migrate();
+    // SeedData.Initialize(db);
 }
 
 if (!app.Environment.IsDevelopment())
