@@ -35,7 +35,7 @@ using (var scope = app.Services.CreateScope())
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     try
 {
-    db.Database.EnsureCreated();
+    //db.Database.EnsureCreated();
     SeedData.Initialize(db);
 }
 catch (Exception ex)
