@@ -1,0 +1,30 @@
+@model DashboardViewModel
+@{
+    ViewData["Title"] = "Inicio";
+}
+<section class="hero-card">
+    <div>
+        <p class="eyebrow">Gamificación ecológica urbana</p>
+        <h1>Tu siguiente misión</h1>
+        <p>Completa un reto hoy, gana puntos y marca diferencia real en tu ciudad.</p>
+        <a class="btn btn-light btn-lg" href="/Challenges">Ver retos disponibles</a>
+    </div>
+    <div class="mission-card">
+        <span class="badge text-bg-success">Recomendado</span>
+        <h3>@Model.RecommendedChallenge?.Name</h3>
+        <p>@Model.RecommendedChallenge?.EcoImpact</p>
+        <strong>+@Model.RecommendedChallenge?.Points pts</strong>
+    </div>
+</section>
+
+<div class="grid-4 mt-4">
+    <div class="stat-card"><span>Mis puntos</span><strong>@(Model.User?.Points ?? 0)</strong></div>
+    <div class="stat-card"><span>Mi ranking</span><strong>@(Model.CurrentRank == 0 ? "—" : $"#{Model.CurrentRank}")</strong></div>
+    <div class="stat-card"><span>Racha diaria</span><strong>@(Model.User?.DailyStreak ?? 0) días</strong></div>
+    <div class="stat-card"><span>Nivel actual</span><strong>@(Model.User?.Level ?? 1)</strong></div>
+</div>
+
+<section class="card-premium mt-4">
+    <h2>Hoy puedes marcar diferencia</h2>
+    <p>EcoWarrior convierte acciones sostenibles en retos, puntos, clasificación e impacto visible.</p>
+</section>

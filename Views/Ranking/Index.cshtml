@@ -1,0 +1,19 @@
+@model IEnumerable<AppUser>
+@{ ViewData["Title"] = "Clasificación"; var list = Model.ToList(); }
+<h1>Clasificación EcoWarrior</h1>
+<p class="text-muted">Compite con impacto real. Cada acción cuenta.</p>
+<div class="podium">
+@for (int i = 0; i < Math.Min(3, list.Count); i++)
+{
+    <div class="podium-card"><div class="medal">@(i == 0 ? "🥇" : i == 1 ? "🥈" : "🥉")</div><strong>@list[i].FullName</strong><span>@list[i].Points pts</span></div>
+}
+</div>
+<table class="table table-hover mt-4">
+<thead><tr><th>Puesto</th><th>Usuario</th><th>Distrito</th><th>Puntos</th><th>Racha</th></tr></thead>
+<tbody>
+@for (int i = 0; i < list.Count; i++)
+{
+<tr><td>#@(i+1)</td><td>@list[i].FullName</td><td>@list[i].District</td><td>@list[i].Points</td><td>@list[i].DailyStreak días</td></tr>
+}
+</tbody>
+</table>

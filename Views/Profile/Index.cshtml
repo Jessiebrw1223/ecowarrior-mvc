@@ -1,0 +1,12 @@
+@model AppUser
+@{ ViewData["Title"] = "Perfil"; }
+<section class="profile-header">
+    <div class="avatar">@Model.FullName.Substring(0,1)</div>
+    <div><h1>@Model.FullName</h1><p>Nivel @Model.Level · @Model.Points puntos · @Model.District</p></div>
+    <button class="btn btn-success ms-auto">Compartir logros</button>
+</section>
+<div class="grid-3 mt-4">
+    <div class="stat-card"><span>Insignias</span><strong>3</strong></div>
+    <div class="stat-card"><span>Impacto ambiental</span><strong>Alto</strong></div>
+    <div class="stat-card"><span>Racha</span><strong>@Model.DailyStreak días</strong></div>
+</div>

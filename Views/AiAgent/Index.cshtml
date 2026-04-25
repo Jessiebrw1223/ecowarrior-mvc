@@ -1,0 +1,14 @@
+@model AiQuestionViewModel
+@{ ViewData["Title"] = "EcoGuide AI"; }
+<div class="auth-card wide">
+    <h1>EcoGuide AI</h1>
+    <p>Pregunta qué reto completar, cómo subir de nivel o cómo mejorar tu impacto.</p>
+    <form method="post" action="/AiAgent/Ask">
+        <textarea asp-for="Question" class="form-control" rows="4" placeholder="¿Qué reto me recomiendas hoy?"></textarea>
+        <button class="btn btn-success mt-3">Preguntar</button>
+    </form>
+    @if (!string.IsNullOrWhiteSpace(Model.Answer))
+    {
+        <div class="ai-answer mt-4">@Model.Answer</div>
+    }
+</div>
