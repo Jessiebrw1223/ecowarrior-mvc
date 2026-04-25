@@ -33,16 +33,17 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
     try
-{
-    //db.Database.EnsureCreated();
-    SeedData.Initialize(db);
-}
-catch (Exception ex)
-{
-    Console.WriteLine("ERROR INICIALIZANDO BD:");
-    Console.WriteLine(ex.Message);
-}
+    {
+        db.Database.EnsureCreated();
+        SeedData.Initialize(db);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("ERROR INICIALIZANDO BD:");
+        Console.WriteLine(ex.ToString());
+    }
 }
 
 if (!app.Environment.IsDevelopment())
